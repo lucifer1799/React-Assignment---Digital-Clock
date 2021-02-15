@@ -6,7 +6,7 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      time:'',
+      time:new Date().toLocaleTimeString(),
       intervalId:''
     }
   }
