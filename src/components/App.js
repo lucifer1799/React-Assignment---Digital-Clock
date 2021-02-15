@@ -3,12 +3,34 @@ import '../styles/App.css';
 
 class App extends Component {
 
+  constructor(){
+    super();
+    this.state={
+      time:'',
+      intervalId:''
+    }
+  }
+  componentDidMount(){
+    let intervalId = setInterval(()=>{
+      const mytime=new Date().toLocaleTimeString()
+      this.setState({
+        time: mytime,
+      })
+
+    },1000)
+    this.setState({ intervalId: intervalId })
+
+  }
+  componentWillUnmount(){
+    clearInterval(this.state.intervalId)
+  }
+  
+
     render() {
-      const time=new Date().toLocaleTimeString()
 
         return(
             <div className='Clock'>
-              <h3 id='time'>{time}</h3>
+              <h3 id='time'>{this.state.time}</h3>
                
             </div>
         )
